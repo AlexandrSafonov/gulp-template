@@ -1,0 +1,70 @@
+@include grid('four', 4, 4, 4);
+@include grid('three', 3, 4, 4);
+@include grid('two', 2, 4, 4);
+body { 
+    font-size: $fontSizeMain;
+    line-height: $lineHeight;
+    color: $Color1;
+}
+main {
+    $mainMargin: 30px;
+    p {
+        margin: 0 0 $mainMargin;
+    } 
+    img {
+        max-width: 100%;
+    }
+    section {
+        padding-top: 50px;
+        padding-bottom: 50px - $mainMargin;
+        &.nopadding {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+}
+.w1 {
+    position: relative;
+}
+.wrapper {
+    @include clear;
+    margin: 0 auto;
+    width: 1150px;
+}
+.img {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.with-icon {
+    padding-left: 30px;
+    position: relative;
+    i {
+        position: absolute;
+        left: 0;
+        top: 0;
+        line-height: $lineHeight;
+    }
+    &.right {
+        padding-right: 30px;
+        padding-left: 0;
+        i {
+            left: auto;
+            right: 0;
+        }
+    }
+}
+.text_center { 
+    text-align: center;
+}
+.text_right {
+    text-align: right;
+}
+.text_left {
+    text-align: left;
+}
+
+.main-slider {
+
+}
+

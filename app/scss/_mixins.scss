@@ -1,0 +1,72 @@
+@mixin linear-gradiend($direction, $list-color){
+    background-image: -webkit-linear-gradient($direction, $list-color);
+    background: linear-gradient(to $direction, $list-color);
+    $list-color-first: nth($list-color,1);
+    $list-color-last: nth($list-color,-1);
+    @if $direction == 'top' or $direction == 'bottom' {
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr= '#{nth($list-color,1)}' , 
+            endColorstr='#{nth($list-color,-1)}',GradientType=0);
+    }
+    @if $direction == 'left' or $direction == 'right' {
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr= '#{nth($list-color,1)}' , 
+            endColorstr='#{nth($list-color,-1)}',GradientType=1);
+    }
+} 
+
+@mixin clear {
+    &:before {
+        content: " ";
+        display: block;
+        clear: both;
+    }
+    &:after {
+        content: " ";
+        display: block;
+        clear: both;
+    }
+}
+
+@mixin vertical-align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+@mixin grid_mq($pref, $items, $marginRight, $marginBottom, $mq){
+    .#{$pref}-items {
+        @include clear;
+        &.#{$mq} {
+            .#{$pref}-items__item {
+                &:nth-child(n){
+                    width: ( (100 - $marginRight * ($items - 1) ) / $items ) * 1%;
+                    margin: 0 $marginRight * 1% $marginBottom * 1% 0;
+                    clear: none;
+                }
+                &:nth-child(#{$items}n+#{$items}) {
+                    margin: 0 0 $marginBottom * 1%;
+                }
+                &:nth-child(#{$items}n+1) {
+                    clear: left;
+                }
+            }
+        }
+    }
+}
+@mixin grid($pref, $items, $marginRight, $marginBottom){
+    .#{$pref}-items {
+        @include clear;
+        .#{$pref}-items__item {
+            width: ( (100 - $marginRight * ($items - 1) ) / $items ) * 1%;
+            float: left;
+            margin: 0 $marginRight * 1% $marginBottom * 1% 0;
+            &:nth-child(#{$items}n+#{$items}) {
+                margin: 0 0 $marginBottom * 1%;
+            }
+            &:nth-child(#{$items}n+1) {
+                clear: left;
+            }
+        }
+    }
+}

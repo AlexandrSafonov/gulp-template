@@ -12,7 +12,7 @@ var gulp       = require('gulp'),
 	autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('sass', function(){ 
-	return gulp.src('app/sass/**/*.sass') 
+	return gulp.src('app/scss/**/*.scss') 
 		.pipe(sass()) 
 		.pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], { cascade: true })) 
 		.pipe(gulp.dest('app/css')) 
@@ -23,15 +23,13 @@ gulp.task('browser-sync', function() {
 	browserSync({ 
 		server: { 
 			baseDir: 'app' 
-		},
-		notify: false 
+		}
 	});
 });
 
 gulp.task('scripts', function() {
 	return gulp.src([ 
-		'app/libs/jquery/dist/jquery.min.js', 
-		'app/libs/magnific-popup/dist/jquery.magnific-popup.min.js' 
+		'app/libs/jquery/dist/jquery.min.js'
 		])
 		.pipe(concat('libs.min.js')) 
 		.pipe(uglify()) 
@@ -46,7 +44,7 @@ gulp.task('css-libs', ['sass'], function() {
 });
 
 gulp.task('watch', ['browser-sync', 'css-libs', 'scripts'], function() {
-	gulp.watch('app/sass/**/*.sass', ['sass']); 
+	gulp.watch('app/scss/**/*.scss', ['sass']); 
 	gulp.watch('app/*.html', browserSync.reload); 
 	gulp.watch('app/js/**/*.js', browserSync.reload);
 });

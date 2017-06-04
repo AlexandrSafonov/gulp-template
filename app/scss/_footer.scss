@@ -1,0 +1,23 @@
+footer {
+    $padding: 50px;
+    .footer {
+        background-color: $Color2;
+        .footer-copy {
+            float: left;
+            padding: $padding  0; 
+        }
+        .footer-nav{ 
+            float: right;
+            font-size: 0;
+            padding: $padding - 10px 0;
+            ul {
+                font-size: $fontSizeMain;
+                li {
+                    display: inline-block;
+                    vertical-align: top;
+                    padding: 10px 15px 10px 15px; 
+                }
+            } 
+        }
+    }
+}
